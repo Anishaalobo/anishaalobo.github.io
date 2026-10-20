@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anisha Lobo — Data & Business Analyst</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js CDN for 3D Background Lattice -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Devicon for Verified Tech Stack Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="relative bg-[#0A0908] text-[#E7E7E9] selection:bg-[#D6E949] selection:text-[#0A0908]">
+
+  <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+  <div id="pre" aria-hidden="true"><div><b id="preN" class="font-display">1</b><span class="font-display">%</span></div></div>
+
+  <!-- GLOBAL AMBIENT CURSOR TORCH -->
+  <div id="ambientTorch" class="ambient-torch fixed inset-0 z-40"></div>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative h-screen w-screen flex flex-col justify-between overflow-hidden bg-[#0A0908]">
+
+    <header class="w-full px-6 md:px-12 pt-7 pb-4 flex items-center justify-end z-50 shrink-0">
+      <div class="flex items-center gap-3 flex-nowrap shrink-0">
+        <a
+          href="resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whitespace-nowrap shrink-0 px-5 py-2.5 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-md text-xs font-semibold uppercase tracking-wider text-neutral-200 hover:border-neutral-400 hover:text-[#E7E7E9] transition-all shadow-sm flex items-center gap-2"
+        >
+          <span>View Resume</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/anishaalobo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="lc-btn whitespace-nowrap shrink-0 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2"
+        >
+          <span>Let's Connect</span>
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </header>
+
+    <div id="heroStage" class="relative flex-1 w-full overflow-hidden select-none pb-0">
+
+      <div class="absolute inset-0 z-10 pointer-events-none">
+        <div class="absolute left-6 md:left-14 top-4 md:top-8 text-left">
+          <h2 class="font-display text-3xl md:text-5xl text-neutral-400 tracking-wide leading-tight">
+            DATA ANALYST<br />
+            BUSINESS ANALYST
+          </h2>
+        </div>
+
+        <div class="absolute right-6 md:right-14 top-4 md:top-10 hidden md:block text-right max-w-sm">
+          <blockquote class="font-quote text-lg lg:text-xl text-neutral-400 italic leading-relaxed">
+            “Every dataset has a story—I just make sure it gets told right.”
+          </blockquote>
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-between pointer-events-none animate-name-pop">
+          <div class="w-1/2 h-full flex items-center justify-end pr-[14vw] md:pr-[12vw]">
+            <span class="font-display text-[17vw] md:text-[18vw] leading-none uppercase text-[#D6E949] font-bold tracking-tight drop-shadow-[0_10px_40px_rgba(214,233,73,0.35)]">ANISHA</span>
+          </div>
+          <div class="w-1/2 h-full flex items-center justify-start pl-[14vw] md:pl-[12vw]">
+            <span class="font-display text-[17vw] md:text-[18vw] leading-none uppercase text-[#D6E949] font-bold tracking-tight drop-shadow-[0_10px_40px_rgba(214,233,73,0.35)]">LOBO</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="heroSpotlight" class="spotlight-lens absolute inset-0 z-20 pointer-events-none">
+        <div class="absolute left-6 md:left-14 top-4 md:top-8 text-left">
+          <h2 class="font-display text-3xl md:text-5xl text-[#E7E7E9] drop-shadow-[0_0_25px_rgba(231,231,233,0.9)] tracking-wide leading-tight">
+            DATA ANALYST<br />
+            BUSINESS ANALYST
+          </h2>
+        </div>
+
+        <div class="absolute right-6 md:right-14 top-4 md:top-10 hidden md:block text-right max-w-sm">
+          <blockquote class="font-quote text-lg lg:text-xl text-[#E7E7E9] drop-shadow-[0_0_20px_rgba(231,231,233,0.85)] italic leading-relaxed">
+            “Every dataset has a story—I just make sure it gets told right.”
+          </blockquote>
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-between pointer-events-none">
+          <div class="w-1/2 h-full flex items-center justify-end pr-[14vw] md:pr-[12vw]">
+            <span class="font-display text-[17vw] md:text-[18vw] leading-none uppercase text-[#E7E7E9] drop-shadow-[0_0_45px_rgba(231,231,233,0.95)] font-bold tracking-tight">ANISHA</span>
+          </div>
+          <div class="w-1/2 h-full flex items-center justify-start pl-[14vw] md:pl-[12vw]">
+            <span class="font-display text-[17vw] md:text-[18vw] leading-none uppercase text-[#E7E7E9] drop-shadow-[0_0_45px_rgba(231,231,233,0.95)] font-bold tracking-tight">LOBO</span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="portraitStage"
+        class="portrait-stage absolute bottom-0 left-1/2 z-30 h-[85vh] max-h-[920px] w-auto flex items-end justify-center cursor-crosshair animate-portrait-fixed"
+        style="transform: translateX(-50%);"
+      >
+        <img
+          id="basePhoto"
+          fetchpriority="high"
+          decoding="async"
+          src="assets/anisha-photo.png"
+          alt="Anisha Lobo"
+          class="h-full w-auto max-h-[85vh] object-contain object-bottom drop-shadow-[0_30px_70px_rgba(10,9,8,0.95)] select-none pointer-events-none"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME SECTION -->
+  <section id="about" class="relative min-h-screen w-full px-6 md:px-16 lg:px-24 py-24 flex flex-col justify-center border-t border-neutral-800/80 bg-[#0A0908] overflow-hidden">
+    <div class="mb-10 relative z-10">
+      <h2 class="font-display text-7xl md:text-9xl tracking-tight text-[#D6E949] drop-shadow-[0_0_35px_rgba(214,233,73,0.35)] uppercase select-none">About me</h2>
+    </div>
+
+    <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center z-10">
+      <div class="lg:col-span-6 flex justify-center lg:justify-start">
+        <div class="relative w-full max-w-2xl flex items-end justify-center overflow-hidden">
+          <img
+            src="assets/anisha-photo1.png"
+            loading="lazy"
+            decoding="async"
+            alt="Anisha Lobo - About Me"
+            class="about-blend-mask w-full h-auto max-h-[800px] md:max-h-[880px] object-contain object-bottom select-none transition-transform duration-700 hover:scale-[1.02] drop-shadow-[0_30px_60px_rgba(10,9,8,0.9)]"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 flex flex-col gap-6 text-neutral-300 text-lg md:text-xl leading-relaxed font-light">
+        <p>
+          I’m an MSc Data Science graduate with two internship experiences, looking to build my career in <span class="text-[#E7E7E9] font-medium hover:text-[#D6E949] transition-colors">Data Analytics</span> and <span class="text-[#E7E7E9] font-medium hover:text-[#D6E949] transition-colors">Business Analytics</span>.
+        </p>
+        <p>
+          Throughout my college years, I’ve taken on various leadership and coordination responsibilities across events and fests, including Math Fiesta, Aloysian Dance League, Star of Imprints and many more.
+        </p>
+        <p>
+          Alongside college, I’ve also been actively involved in hostel leadership, serving as a UG Hostel Core Committee Member and later as an Assistant Hostel Leader in PG.
+        </p>
+        <p class="text-neutral-400">
+          These experiences have helped me develop leadership, communication, coordination and organisational skills. I’ve also always been someone who is creative, dependable and willing to step up when needed, especially when things don’t go exactly as planned.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="relative w-full px-6 md:px-16 lg:px-24 pt-28 pb-16">
+    <h2 class="font-display text-7xl md:text-9xl tracking-tight text-[#D6E949] drop-shadow-[0_0_35px_rgba(214,233,73,0.35)] select-none">Experience</h2>
+    <div id="xstack" class="relative z-10 w-full max-w-6xl mx-auto mt-8">
+
+      <article class="ex" style="--i:0">
+        <header class="exh" role="button" tabindex="0" aria-expanded="false">
+          <span class="xi">01</span>
+          <div><h3 class="xn">Instawork</h3><span class="xs">Quality Analyst Intern</span></div>
+          <span class="xd">May 2026 – July 2026</span>
+          <span class="exp" aria-hidden="true"></span>
+        </header>
+        <div class="exb"><div class="exin"><div class="xg">
+          <ul>
+            <li><em>01</em><span>Reviewed and graded video data used for robotics training.</span></li>
+            <li><em>02</em><span>Analysed video sequences against defined quality guidelines and requirements.</span></li>
+            <li><em>03</em><span>Identified inaccurate, incomplete or unsuitable data for rejection.</span></li>
+            <li><em>04</em><span>Maintained data accuracy, consistency and quality across large volumes of data.</span></li>
+            <li><em>05</em><span>Reviewed, clipped and graded video clips used in robotics training workflows.</span></li>
+          </ul>
+          <div>
+            <div class="xl">How the work flowed</div>
+            <ol class="xf">
+              <li style="--d:0.0s">Review video</li>
+              <li style="--d:0.8s">Clip</li>
+              <li style="--d:1.6s">Grade</li>
+              <li style="--d:2.4s">Accept or reject</li>
+            </ol>
+            <div class="xchips"><span>Robotics Data QA</span><span>Quality Assurance</span><span>Video Quality Grading</span><span>Data Validation</span></div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <article class="ex" style="--i:1">
+        <header class="exh" role="button" tabindex="0" aria-expanded="false">
+          <span class="xi">02</span>
+          <div><h3 class="xn">Tatvam Consulting</h3><span class="xs">Data Analyst Intern</span></div>
+          <span class="xd">Jan 2026 – May 2026</span>
+          <span class="exp" aria-hidden="true"></span>
+        </header>
+        <div class="exb"><div class="exin"><div class="xg">
+          <ul>
+            <li><em>01</em><span>Worked with different teams to understand their data and business requirements.</span></li>
+            <li><em>02</em><span>Collected, organised and analysed data to support business requirements.</span></li>
+            <li><em>03</em><span>Used Excel for data handling, analysis and reporting.</span></li>
+            <li><em>04</em><span>Supported teams in turning collected information into useful insights for decision-making.</span></li>
+            <li><em>05</em><span>Approached and contacted colleges and organised business-related information.</span></li>
+          </ul>
+          <div>
+            <div class="xl">How the work flowed</div>
+            <ol class="xf">
+              <li style="--d:0.0s">Collect data</li>
+              <li style="--d:0.8s">Organise it</li>
+              <li style="--d:1.6s">Analyse in Excel</li>
+              <li style="--d:2.4s">Report insights</li>
+            </ol>
+            <div class="xchips"><span>Microsoft Excel</span><span>Data Collection</span><span>Data Analysis</span><span>Business Reporting</span></div>
+          </div>
+        </div></div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="relative w-full px-6 md:px-16 lg:px-24 pt-24 pb-20">
+    <h2 class="font-display text-7xl md:text-9xl tracking-tight text-[#D6E949] drop-shadow-[0_0_35px_rgba(214,233,73,0.35)] select-none">Education</h2>
+    <div class="edu-tl relative z-10 w-full max-w-6xl mx-auto mt-10">
+      <div class="edu-track">
+        <article class="edu edu-now" aria-label="Master’s degree">
+          <div class="edu-hd">
+            <p class="edu-kicker">Master’s degree</p>
+            <h3 class="edu-inst">ST ALOYSIUS (Deemed to be University)</h3>
+            <p class="edu-sub">Institute of Management &amp; IT (AIMIT), Mangaluru</p>
+          </div>
+          <div class="edu-bd">
+            <p class="edu-degree">MSc in Data Science</p>
+            <p class="edu-year"><b>2024–2026</b></p>
+          </div>
+        </article>
+        <article class="edu" aria-label="Bachelor’s degree">
+          <div class="edu-hd">
+            <p class="edu-kicker">Bachelor’s degree</p>
+            <h3 class="edu-inst">ST ALOYSIUS COLLEGE (AUTONOMOUS)</h3>
+            <p class="edu-sub">Mangaluru</p>
+          </div>
+          <div class="edu-bd">
+            <p class="edu-degree">BSc in Mathematics and Physics (Majors), Computer Science (Minor)</p>
+            <p class="edu-year"><b>2021–2024</b></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="relative w-full overflow-hidden" style="height:100vh">
+    <h2 class="font-display text-6xl md:text-8xl tracking-tight text-[#D6E949] absolute top-8 left-6 md:left-16 z-20 pointer-events-none select-none">Projects</h2>
+    <div class="mw">
+      <div class="mw-bg"></div>
+      <div class="mw-floor"></div>
+      <div class="mw-ring" id="mwring"></div>
+    </div>
+    <div id="mwdots" role="tablist" aria-label="Project">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <button id="mwprev" class="mwarr" style="left:1.2rem" aria-label="Previous project"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+    <button id="mwnext" class="mwarr" style="right:1.2rem" aria-label="Next project"><i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="relative min-h-screen w-full px-6 md:px-16 lg:px-24 pt-28 pb-32 flex flex-col justify-center border-t border-neutral-800/80 bg-[#0A0908] overflow-hidden select-none">
+    <div class="mb-14 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h2 class="font-display text-7xl md:text-9xl tracking-tight text-[#D6E949] drop-shadow-[0_0_35px_rgba(214,233,73,0.35)] uppercase">Skills</h2>
+      </div>
+    </div>
+    <div class="relative w-full max-w-6xl mx-auto z-10">
+      <canvas id="skNet" class="hidden md:block w-full h-[640px] cursor-crosshair"></canvas>
+      <div id="skList" class="md:hidden space-y-4"></div>
+    </div>
+  </section>
+
+  <!-- BEYOND THE RESUME SECTION -->
+  <section id="beyond" class="relative w-full px-6 md:px-16 lg:px-24 py-28">
+    <h2 class="font-display text-7xl md:text-9xl tracking-tight text-[#D6E949] drop-shadow-[0_0_35px_rgba(214,233,73,0.35)] select-none">Beyond the resume</h2>
+    <div id="bgrid" class="relative z-10 w-full max-w-7xl mx-auto mt-12"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto mt-16">
+      <span class="text-[11px] uppercase tracking-widest text-neutral-500 font-bold">Hobbies</span>
+      <ul class="mt-5 flex flex-wrap gap-3">
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="book-open" class="w-4 h-4 text-[#D6E949]"></i>Reading Novels</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="flame" class="w-4 h-4 text-[#D6E949]"></i>Scented Candle Making</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="flower-2" class="w-4 h-4 text-[#D6E949]"></i>Chenille Stem Flower Crafting</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="mountain" class="w-4 h-4 text-[#D6E949]"></i>Trekking &amp; Nature Exploration</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="message-circle" class="w-4 h-4 text-[#D6E949]"></i>Meeting New People &amp; Engaging in Conversations</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="coffee" class="w-4 h-4 text-[#D6E949]"></i>Coffee Mug Collecting</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="gem" class="w-4 h-4 text-[#D6E949]"></i>Paper Quilling &amp; Jewellery Making</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="palette" class="w-4 h-4 text-[#D6E949]"></i>Creative DIY &amp; Handmade Crafts</li>
+        <li class="action-badge px-5 py-3 rounded-full flex items-center gap-3 text-sm text-neutral-200"><i data-lucide="mic" class="w-4 h-4 text-[#D6E949]"></i>Event Hosting &amp; Public Speaking</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT AND FOOTER SECTION -->
+  <footer id="contact" class="relative w-full border-t border-neutral-800/80 bg-[#0A0908] pt-24 pb-36 select-none overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#D6E949]/10 blur-3xl pointer-events-none rounded-full"></div>
+
+    <div class="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+      <p class="text-center text-xs md:text-sm uppercase tracking-widest text-neutral-300 font-medium mb-6 px-4">Open to full-time Data Analyst and Business Analyst roles</p>
+
+      <div id="hands" class="relative mb-10" style="width:100vw;margin-left:calc(50% - 50vw);height:clamp(300px,34vw,640px)">
+        <canvas id="handsC" class="w-full h-full" aria-label="Two professionals in suits shaking hands, rendered in 3D" role="img"></canvas>
+        <div id="handsFb" class="absolute inset-0 items-center justify-center" style="display:none" aria-hidden="true"><i data-lucide="handshake" class="w-24 h-24 text-[#D6E949]"></i></div>
+      </div>
+
+      <div id="closing" class="text-center max-w-3xl mx-auto px-4 mb-12">
+        <p class="closing-line">I may not know everything from the start. <span>But I know how to <em>learn</em>, how to <em>show up</em> and how to <em>keep going</em>.</span></p>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto mb-20">
+        <p class="text-neutral-300 text-sm md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-8">I'm Anisha, an M.Sc. Data Science graduate from Mangaluru. I'm creative and dependable, curious about people and different perspectives and looking for meaningful work where data helps people decide better. If that sounds like a fit, I would love to hear from you.</p>
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
+          <a href="https://wa.me/919036251661?text=Hi%20Anisha,%20came%20across%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="mag px-8 py-3.5 rounded-full bg-[#D6E949] hover:bg-[#E7E7E9] text-[#0A0908] text-xs font-bold uppercase tracking-wider transition-colors shadow-[0_0_25px_rgba(214,233,73,0.35)] flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i><span>Message me</span></a>
+          <a href="mailto:anishaalobo@gmail.com" class="mag action-badge px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#E7E7E9] flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-[#D6E949]"></i><span>Email</span></a>
+          <a href="resume.pdf" download class="mag action-badge px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#E7E7E9] flex items-center gap-2"><i data-lucide="download" class="w-4 h-4 text-[#D6E949]"></i><span>Download resume</span></a>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+          <a href="https://www.linkedin.com/in/anishaalobo" target="_blank" rel="noopener noreferrer" class="mag action-badge px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#E7E7E9] flex items-center gap-2"><i data-lucide="linkedin" class="w-4 h-4 text-[#D6E949]"></i><span>LinkedIn</span></a>
+          <a href="https://github.com/anishaalobo" target="_blank" rel="noopener noreferrer" class="mag action-badge px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#E7E7E9] flex items-center gap-2"><i data-lucide="github" class="w-4 h-4 text-[#D6E949]"></i><span>GitHub</span></a>
+          <a href="https://leetcode.com/Anisha_Lobo" target="_blank" rel="noopener noreferrer" class="mag action-badge px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#E7E7E9] flex items-center gap-2"><i data-lucide="code-xml" class="w-4 h-4 text-[#D6E949]"></i><span>LeetCode</span></a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 max-w-2xl mx-auto border border-neutral-800 rounded-2xl divide-x divide-neutral-800 overflow-hidden">
+          <div class="py-4"><div class="font-display text-4xl text-[#D6E949]">2</div><div class="text-[10px] uppercase tracking-widest text-neutral-500">Internships</div></div>
+          <div class="py-4"><div class="font-display text-4xl text-[#D6E949]">6+</div><div class="text-[10px] uppercase tracking-widest text-neutral-500">Projects</div></div>
+          <div class="py-4"><div class="font-display text-4xl text-[#D6E949]">8.38/10</div><div class="text-[10px] uppercase tracking-widest text-neutral-500">Master's CGPA</div></div>
+          <div class="py-4"><div class="font-display text-4xl text-[#D6E949]">A</div><div class="text-[10px] uppercase tracking-widest text-neutral-500">Grade</div></div>
+        </div>
+        <p class="mt-4 text-[11px] uppercase tracking-widest text-neutral-500">M.Sc. Data Science</p>
+      </div>
+
+      <div class="w-full h-[1px] bg-neutral-800/80 mb-14"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div class="md:col-span-5 flex flex-col gap-4">
+          <span class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold">Connect</span>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://wa.me/919036251661?text=Hi%20Anisha,%20came%20across%20your%20portfolio!" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" class="action-badge w-11 h-11 rounded-xl flex items-center justify-center text-neutral-300 hover:text-[#D6E949]"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+            <a href="mailto:anishaalobo@gmail.com" title="Send an Email" class="action-badge w-11 h-11 rounded-xl flex items-center justify-center text-neutral-300 hover:text-[#D6E949]"><i data-lucide="mail" class="w-4 h-4"></i></a>
+            <a href="https://linkedin.com/in/anishaalobo" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="action-badge w-11 h-11 rounded-xl flex items-center justify-center text-neutral-300 hover:text-[#D6E949]"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            <a href="https://github.com/anishaalobo" target="_blank" rel="noopener noreferrer" title="GitHub" class="action-badge w-11 h-11 rounded-xl flex items-center justify-center text-neutral-300 hover:text-[#D6E949]"><i data-lucide="github" class="w-4 h-4"></i></a>
+            <a href="https://leetcode.com/Anisha_Lobo" target="_blank" rel="noopener noreferrer" title="LeetCode" class="action-badge w-11 h-11 rounded-xl flex items-center justify-center text-neutral-300 hover:text-[#D6E949]"><i data-lucide="code-xml" class="w-4 h-4"></i></a>
+          </div>
+          <p class="text-xs text-neutral-500 font-light mt-1">Open for full-time Data &amp; Business Analyst opportunities.</p>
+        </div>
+
+        <div class="md:col-span-7 flex flex-col items-start md:items-end gap-3">
+          <span class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold mb-1">Curriculum Vitae</span>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-[#D6E949] text-neutral-200 hover:text-[#E7E7E9] text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 group">
+            <i data-lucide="file-text" class="w-4 h-4 text-[#D6E949]"></i>
+            <span>View Resume</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+          </a>
+          <div class="flex items-center gap-2 text-xs text-neutral-500 font-light mt-1">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#D6E949]"></i>
+            <span>Mangaluru, Karnataka, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-600">
+        <span>© 2026 Anisha Lobo. All rights reserved.</span>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#D6E949]"></span>
+          <span class="text-neutral-400 font-medium">Available for Work</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BOTTOM NAVIGATION -->
+  <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <div class="flex items-center gap-3.5 sm:gap-6 px-5 py-3 rounded-full bg-neutral-900/90 border border-neutral-800 shadow-[0_12px_40px_rgba(10,9,8,0.8)] backdrop-blur-xl text-neutral-400 text-xs font-semibold tracking-wider uppercase transition-all hover:border-[#D6E949]">
+      <a href="#home" data-p="home" aria-label="Back to home" title="Home" class="shrink-0 flex items-center justify-center">
+        <img src="assets/anisha-photo.png" alt="Anisha Profile Thumbnail" class="w-7 h-7 rounded-full object-cover border border-neutral-700 shadow-inner hover:scale-105 transition-transform" />
+      </a>
+      <a href="#about" data-p="about" class="hover:text-[#E7E7E9] transition-colors">About</a>
+      <a href="#experience" data-p="experience" class="hover:text-[#E7E7E9] transition-colors">Experience</a>
+      <a href="#education" data-p="education" class="hover:text-[#E7E7E9] transition-colors">Education</a>
+      <a href="#projects" data-p="projects" class="hover:text-[#E7E7E9] transition-colors">Projects</a>
+      <a href="#skills" data-p="skills" class="hover:text-[#E7E7E9] transition-colors">Skills</a>
+      <a href="#beyond" data-p="beyond" class="hover:text-[#E7E7E9] transition-colors">Beyond</a>
+      <a href="#contact" data-p="contact" class="hover:text-[#E7E7E9] transition-colors">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Animation dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Your JavaScript, kept separately -->
+  <script src="script.js"></script>
+</body>
+</html>
